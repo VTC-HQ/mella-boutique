@@ -1,0 +1,1 @@
+This folder will be used to store all the ideas and brainstorms of the project.

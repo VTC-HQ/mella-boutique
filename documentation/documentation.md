@@ -1,0 +1,1 @@
+This folder will be used to store all the documentation of the project.
