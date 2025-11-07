@@ -143,6 +143,20 @@ When asked to "create a dev log" or "update dev log" - always check if a Boutiqu
 **Update completed at: [HH:MM AM/PM] on [MM-DD-YYYY]**
 ````
 
+### Brainstorming Workflow
+
+**Trigger:** User asks to "brainstorm on [topic]".
+
+**Procedure:**
+1.  **Explore Brainstorming Context:** Review the contents of the `brainstorm/` folder to understand previous ideas and the general direction of the project.
+2.  **Engage in Brainstorming:** Start a collaborative brainstorming session with the user on the specified topic. Ask clarifying questions to explore the topic thoroughly.
+3.  **Await Documentation Command:** Continue the brainstorming session until the user signals that they are ready to document the results (e.g., "let's document this").
+4.  **Document the Outcome:**
+    -   Create a new markdown file in the `documentation/` folder. The filename should be descriptive of the brainstorming topic (e.g., `[Topic]_Brainstorm_Summary.md`).
+    -   Summarize the key points, decisions, and outcomes of the brainstorming session in the new file.
+    -   Ask for clarification if you are unsure how to structure the document or what to include.
+5.  **Confirmation:** Inform the user that the documentation has been created and provide the path to the new file.
+
 ## Git Workflow & Standards
 
 All code contributions, including commits and pull requests, must adhere to the project-wide guidelines outlined in the root `CONTRIBUTING.md` file.
