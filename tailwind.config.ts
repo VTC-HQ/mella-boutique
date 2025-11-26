@@ -3,11 +3,12 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     fontFamily: {
       sans: ["var(--font-inter)"],
-      serif: ["var(--font-cormorant)"],
+      serif: ["var(--font-cormorant-garamond)"],
     },
     fontSize: {
       'heading-one': '2.05rem', // formerly '33'
@@ -27,6 +28,7 @@ const config: Config = {
       },
     },
   },
+  // @ts-ignore
   daisyui: {
     themes: [
       {
@@ -37,7 +39,7 @@ const config: Config = {
           'secondary-content': '#F6F6F6',
           'accent': '#FFCB74',
           'accent-content': '#111111',
-          'base-100': '#F6F6F6',
+          'base-100': '#fbfbfb',
           'base-200': '#2F2F2F',
           'base-content': '#111111',
         },

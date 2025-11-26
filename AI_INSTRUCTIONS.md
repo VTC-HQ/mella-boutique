@@ -21,6 +21,98 @@ This startup procedure is mandatory to ensure all your work aligns with the proj
 ## Frameworks and Libraries
 - **daisyUI**: When creating components and layouts, reference the daisyUI framework library at https://daisyui.com/llms.txt. This is a text file, if the `web_fetch` tool fails, use `curl` to access it.
 
+## Styling and Theming
+
+### Technology Stack
+- **Tailwind CSS v4**: The project uses Tailwind CSS v4 with the new `@import "tailwindcss"` syntax
+- **DaisyUI v5**: Component library for pre-built UI components
+- **PostCSS**: Using `@tailwindcss/postcss` plugin
+
+### **CRITICAL: Theme Configuration Workaround**
+
+> ⚠️ **Important Compatibility Note**: Due to compatibility issues between Tailwind CSS v4 and DaisyUI v5, the theme configuration does NOT work from `tailwind.config.ts`. All theme colors MUST be defined directly in `app/globals.css` using the `@theme` directive.
+
+#### Theme Color Management
+
+**WHERE TO DEFINE THEME COLORS:**
+- ❌ **DO NOT** modify theme colors in `tailwind.config.ts` - they will not be applied
+- ✅ **DO** modify theme colors in `app/globals.css` within the `@theme` block
+
+**Current Theme Colors (Mella Theme):**
+```css
+@theme {
+  /* DaisyUI Mella Theme Colors */
+  --color-primary: #FFCB74;
+  --color-primary-content: #111111;
+  --color-secondary: #2F2F2F;
+  --color-secondary-content: #F6F6F6;
+  --color-accent: #FFCB74;
+  --color-accent-content: #111111;
+  --color-base-100: #fbfbfb;
+  --color-base-200: #2F2F2F;
+  --color-base-content: #111111;
+}
+```
+
+#### Typography Management
+
+**Centralized Typography Classes:**
+All typography styles are managed in `app/globals.css` within the `@layer components` block to allow for easy global updates.
+
+**Available Typography Classes:**
+- `.text-product-title` - Product page headings (3xl, serif, bold)
+- `.text-product-body` - Product descriptions (extralight, sm)
+- `.text-product-caption` - Small captions (xs, gray-400)
+- `.btn-primary-text` - Button text styling (bold, tracking-widest)
+
+**When to Create New Typography Classes:**
+- If a font style is used in multiple places across the application
+- When a specific text style is part of the brand/design system
+- To avoid inline Tailwind classes for commonly repeated patterns
+
+**How to Add New Typography Classes:**
+1. Define the class in `app/globals.css` within the `@layer components` section
+2. Use `@apply` to compose Tailwind utilities
+3. Update this documentation with the new class name and purpose
+
+#### File Structure Overview
+
+**`app/globals.css`** - Main stylesheet containing:
+```css
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+@theme {
+  /* Theme colors defined here */
+}
+
+@layer utilities {
+  /* Custom utility classes */
+}
+
+@layer components {
+  /* Reusable component classes like typography */
+}
+```
+
+**`tailwind.config.ts`** - Configuration for:
+- Font families (Inter, Cormorant Garamond)
+- Custom font sizes
+- Theme extensions
+- DaisyUI plugin (theme colors are NOT loaded from here)
+
+**`app/layout.tsx`** - Root layout with:
+- Font variable definitions
+- `data-theme="mella"` attribute on `<html>`
+- `bg-base-100` class on `<body>` for global background
+
+### Styling Best Practices
+
+1. **Use Semantic Color Classes**: Use DaisyUI's semantic classes (`bg-primary`, `text-base-content`) instead of arbitrary colors when possible
+2. **Typography**: Use the centralized typography classes for consistent branding
+3. **Avoid Inline Styles**: Use Tailwind classes or custom CSS classes instead of inline `style` attributes
+4. **Theme Colors**: Always refer to `app/globals.css` when checking or modifying theme colors
+
 ## Essential Commands
 
 ```bash

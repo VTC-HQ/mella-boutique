@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Inter, Cormorant } from "next/font/google";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["300", "400", "500", "600"],
 });
 
-const cormorant = Cormorant({
-  variable: "--font-cormorant",
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-cormorant-garamond",
   subsets: ["latin"],
-  weight: "500",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="mella">
       <body
-        className={`${inter.variable} ${cormorant.variable} antialiased`}
+        className={`${inter.variable} ${cormorantGaramond.variable} antialiased font-sans font-light bg-base-100`}
         suppressHydrationWarning={true}
       >
         {children}
